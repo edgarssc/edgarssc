@@ -2,6 +2,7 @@
 
 
 #####################--Cores--#############################################################
+
 cores = {'limpa':'\033[m',
          'azul':'\033[1;34m',
          'amarelo':'\033[1;33m',
@@ -20,27 +21,26 @@ cores_fundo = {'limpa':'\033[m',
 
 #############--Funções--#####################################################################
 
-def perfumaria(X):
-    print('-='*40)
-    print(X)
-    print('-='*40)
-
+#Função para título
 def titulo(x):
-    print()
-    print('='*10, x, '='*10)
-    print()
+    tam = len(x) #retorna o tamanho da string
+    print('='*tam,'\n', x,'\n','='*tam)
+#Função para subtítulo    
+def subTitulo(X):
+    tam = len(X) #retorna o tamanho da string
+    print('\n','-'*tam,'\n', X, '\n', '-'*tam)
+
+#Função que calcula os valores de uma PA e retorna a lista de valores
+def calculaPA(razao,primeiroTermo):
+    PA = [primeiroTermo]
+    for i in range(0,9):
+        proximoTermo = PA[i]+razao
+        PA.append(proximoTermo)
+    return PA
 
 #############--Código Principal--#############################################################
 
-titulo('Soma de todos os números impares que são multiplos de 3 e que se encontram no intervalo de 1 até 500.')
-print()
-soma = 0
-qtd = 0
-#busca apenas numeros impares indo a partir do 1 de 2 em dois
-for i in range(1,501,2):
-    if i % 3 == 0:
-        print(i, end=' ')
-        soma += i
-        qtd += 1 
-print()
-print(f'A soma de todos os números impares multiplos de 3 é: {cores["azul"]}{soma}{cores["limpa"]} o total de números utilizados na soma foi de {cores["verde"]}{qtd}{cores["limpa"]}')
+titulo('Mostra os 10 primeiros termos de uma PA.')
+razao = int(input('Digite a razão: '))
+primeiroTermo = int(input('Digite o 1º termo da PA: '))
+subTitulo(f'Os valores da PA são: {calculaPA(razao,primeiroTermo)}')

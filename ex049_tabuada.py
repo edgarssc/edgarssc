@@ -1,9 +1,7 @@
+#####################--imports--#############################################################
+
+
 #####################--Cores--#############################################################
-
-from random import randint
-from time import sleep
-
-
 cores = {'limpa':'\033[m',
          'azul':'\033[1;34m',
          'amarelo':'\033[1;33m',
@@ -22,20 +20,17 @@ cores_fundo = {'limpa':'\033[m',
 
 #############--Funções--#####################################################################
 
-def perfumaria(X):
-    print('-='*40)
-    print(X)
-    print('-='*40)
 
 def titulo(x):
-    print()
-    print('='*10, x, '='*10)
-    print()
+    tam = len(x) #retorna o tamanho da string
+    print('\n','='*tam,'\n', x, '\n', '='*tam)
+    
+def subTitulo(X):
+    tam = len(X) #retorna o tamanho da string
+    print('\n','-'*tam,'\n', X, '\n', '-'*tam)
 
 #############--Código Principal--#############################################################
 
-perfumaria('Contagem regressiva para o Ano Novo!!!!!')
-for i in range(10,-1,-1):
-    print(i)
-    sleep(1)
-print('FELIZ ANO NOVO!!!!!')
+num = int(input('Digite um número para ver sua tabuada: '))
+for i in range(1,10):
+    print(f'{i} x {num} =', i * num,)
