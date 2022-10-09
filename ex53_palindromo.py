@@ -1,7 +1,5 @@
-#####################--imports--#############################################################
+from distutils import core
 
-
-#####################--Cores--#############################################################
 
 cores = {'limpa':'\033[m',
          'azul':'\033[1;34m',
@@ -30,19 +28,20 @@ def subTitulo(X):
     tam = len(X) #retorna o tamanho da string
     print('\n','-'*tam,'\n', X, '\n', '-'*tam)
 
+def inverterFrase(x):
+    invertida = ''
+    for i in range(len(x) -1,-1,-1):
+        invertida += frase[i]
+    return invertida
 #############--Código Principal--#############################################################
 
-titulo('Informa se o número é primo: ')
-num = int(input('Digite um número: ').strip())
-div = 0
-for i in range(1,num + 1):
-    if num% i == 0:
-        print(cores['azul'],f'{i}',cores['limpa'],end=' ')
-        div += 1
-    else:
-        print(cores['verde'],f'{i}',cores['limpa'],end=' ')
-print()
-if (div > 2):
-    subTitulo(f'O numero {num} não é primo, foi divisível {div} vezes')
+frase = str(input('Digite uma frase: ').replace(' ','').upper())
+# outra forma de fazer seria:
+#   palavras = frase.split()
+#   tudojunto = ''.join(palavras)
+
+
+if inverterFrase(frase) == frase:
+    print(f'A frase foi',cores['azul'],{frase},cores['limpa'], ' e o contrário ficou', cores['amarelo'],{inverterFrase(frase)},cores['limpa'],' e esta frase é um PALINDROMO!')
 else:
-    subTitulo(f'O numero {num} é primo, foi divisível {div} vezes')
+    print(f'A frase foi',cores['azul'],{frase},cores['limpa'], ' e o contrário ficou', cores['amarelo'],{inverterFrase(frase)},cores['limpa'],' e esta frase não é um PALINDROMO!')
