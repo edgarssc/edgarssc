@@ -26,17 +26,38 @@ def subTitulo(X):
     print('\n','-'*tam,'\n', X, '\n', '-'*tam)
 
 #Função para saber se o maior peso
-def maiorPeso(lista_pesos):
-    maior_peso = max(lista_pesos)
-    return maior_peso
+def maiorPeso(lista):
+    maior = max(lista)
+    return maior
 
 #Função para saber o menor peso
-def menorPeso(lista_pesos):
-    maior_peso = min(lista_pesos)
-    return maior_peso
+def menorPeso(lista):
+    menor = min(lista)
+    return menor
 
 #############--Código Principal--#############################################################
 lista_pesos = [] #lista para guardar os pesos
-for i in range(1,6):
-    lista_pesos += [float(input(f'Peso da {i}º pessoa: '))]
-print (f'O maior peso lido foi {maiorPeso(lista_pesos)}Kg e o menor peso foi {menorPeso(lista_pesos)}Kg.')
+qtd_pessoas = int(input('Digite a quantidade de pessoas: '))
+somaidade = 0
+maioridadehomem = 0
+nomehomemaisvelho = ""
+totalmulheresmenorde20 = 0
+for i in range(1,qtd_pessoas + 1):
+    print(f'--------- {i}ª PESSOA ---------')
+    nome = str(input('Nome: ')).strip()
+    idade = int(input('Idade: '))
+    sexo = str(input('Sexo [M/F]: ')).upper()
+    somaidade += idade
+    if i == 1 and sexo in 'Mm':
+        maioridadehomem = idade
+        nomehomemaisvelho = nome
+    if sexo in 'Mm' and idade > maioridadehomem:
+        maioridadehomem = idade
+        nomehomemaisvelho = nome
+    if sexo in 'Ff' and idade < 20:
+        totalmulheresmenorde20 += 1
+
+mediaidade = somaidade / qtd_pessoas
+print(f'A média de idade é de {mediaidade:.2f}.')
+print(f'O home mais velho tem {maioridadehomem} anos e se chama {nomehomemaisvelho} .')
+print(f'São {totalmulheresmenorde20} mulheres com menos de 20 anos.')
